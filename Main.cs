@@ -5,46 +5,44 @@ public class Program {
   public static void Main(string[] args) {
     Console.WriteLine("Dependency Injection Example");
 
-    var dragonFire = new DragonFire();
-    var dragonIce = new DragonIce();
+    Dragon dragonFire = new DragonFire();
+    Dragon dragonIce = new DragonIce();
 
     dragonFire.Skill.Execute();
     dragonIce.Skill.Execute();
   }
 }
 
-public class FireSkill{
-  private string _message = "Fire";
+public abstract class Skill{
+  protected abstract string Message{get;}
 
   public void Execute(){
-    Console.WriteLine($"Skill is used : {_message}");
+    Console.WriteLine($"Skill is used : {Message}");
   }
 }
 
-public class IceSkill{
-  private string _message = "Ice";
-
-  public void Execute(){
-    Console.WriteLine($"Skill is used : {_message}");
-  }
+public class FireSkill : Skill{
+  protected override string Message{get => "Fire";}
 }
 
-public class DragonFire{
-  private FireSkill _skill;
+public class IceSkill :Skill{
+  protected override string Message{get => "Ice";}
+}
 
-  public FireSkill Skill{get => _skill;}
+public class Dragon{
+  protected Skill skill;
 
+  public Skill Skill{get => skill;}
+} 
+
+public class DragonFire : Dragon{
   public DragonFire(){
-    _skill = new FireSkill();
+    skill = new FireSkill();
   }
 }
 
-public class DragonIce{
-  private IceSkill _skill;
-
-  public IceSkill Skill{get => _skill;}
-
+public class DragonIce : Dragon{
   public DragonIce(){
-    _skill = new IceSkill();
+    skill = new IceSkill();
   }
 }
