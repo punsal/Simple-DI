@@ -41,10 +41,18 @@ public class DragonFire : Dragon{
   public DragonFire(){
     skill = new FireSkill();
   }
+
+  public DragonFire(Skill skill){
+    this.skill = skill;
+  }
 }
 
 public class DragonIce : Dragon{
   public DragonIce(){
     skill = new IceSkill();
+  }
+
+  public DragonIce(Skill skill){
+    this.skill = skill;
   }
 }
