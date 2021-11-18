@@ -8,8 +8,8 @@ public class Program {
     Dragon dragonFire = new DragonFire();
     Dragon dragonIce = new DragonIce();
 
-    dragonFire.Skill.Execute();
-    dragonIce.Skill.Execute();
+    dragonFire.UseSkill();
+    dragonIce.UseSkill();
   }
 }
 
@@ -32,7 +32,9 @@ public class IceSkill :Skill{
 public class Dragon{
   protected Skill skill;
 
-  public Skill Skill{get => skill;}
+  public void UseSkill(){
+    skill.Execute();
+  }
 } 
 
 public class DragonFire : Dragon{
