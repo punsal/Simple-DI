@@ -21,6 +21,10 @@ public abstract class Skill{
   }
 }
 
+public class NullSkill : Skill{
+  protected override string Message{get => "";}
+}
+
 public class FireSkill : Skill{
   protected override string Message{get => "Fire";}
 }
