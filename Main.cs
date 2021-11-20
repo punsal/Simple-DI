@@ -43,7 +43,7 @@ public class Dragon{
 
 public class DragonFire : Dragon{
   public DragonFire(){
-    skill = new FireSkill();
+    skill = new NullSkill();
   }
 
   public DragonFire(Skill skill){
@@ -53,7 +53,7 @@ public class DragonFire : Dragon{
 
 public class DragonIce : Dragon{
   public DragonIce(){
-    skill = new IceSkill();
+    skill = new NullSkill();
   }
 
   public DragonIce(Skill skill){
