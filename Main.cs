@@ -5,8 +5,8 @@ public class Program {
   public static void Main(string[] args) {
     Console.WriteLine("Dependency Injection Example");
 
-    Dragon dragonFire = new DragonFire();
-    Dragon dragonIce = new DragonIce();
+    Dragon dragonFire = new DragonFire(new FireSkill());
+    Dragon dragonIce = new DragonIce(new IceSkill());
 
     dragonFire.UseSkill();
     dragonIce.UseSkill();
@@ -36,26 +36,22 @@ public class IceSkill :Skill{
 public class Dragon{
   protected Skill skill;
 
+  public Dragon(){
+    skill = new NullSkill();
+  }
+
   public void UseSkill(){
     skill.Execute();
   }
 } 
 
 public class DragonFire : Dragon{
-  public DragonFire(){
-    skill = new NullSkill();
-  }
-
   public DragonFire(Skill skill){
     this.skill = skill;
   }
 }
 
 public class DragonIce : Dragon{
-  public DragonIce(){
-    skill = new NullSkill();
-  }
-
   public DragonIce(Skill skill){
     this.skill = skill;
   }
